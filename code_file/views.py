@@ -7,7 +7,7 @@ from django.conf import settings
 def qrcode_generator(request):
     if request.method == 'POST':
         mylink =request.POST['link']
-        qr = qrcode.make(mylink)
+        qr = qrcode.make(mylink, box_size=7)
         qr_name = f'{str(time())}.png'
         qr.save(settings.MEDIA_ROOT +'/'+ qr_name)
         context = {'qr_name':qr_name}

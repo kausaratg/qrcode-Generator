@@ -9,29 +9,36 @@
     <title>Qr Code Scanner </title>
 </head>
 <body>
-    <div class="login-box">
-        <h2>Qr Code Generator</h2>
-        <form action="" method="POST"> 
-            {%csrf_token%}
-          <div class="user-box">
-            <input type="url" name="link" required="">
-                <label>Enter Link</label>
-          </div>
-          <input type="submit" id="btn" class="btn btn-submit" value="Generate Code">
-          <br> <br>
-        </form>
-        <div class="qr-img">
-            {% if qr_name %}
-                <img src="/media/{{ qr_name }}" alt="qr code">
-                <br><br>
-                <a href="/media/{{ qr_name }}" download class=" btn-sucess">
-                    <p>Download Image</p>
-                </a>
-            {% endif %}
-
+    <div class="container">
+        <!-- code here -->
+        <div class="card">
+            <h2>Qr Code Generator</h2>
+            <form class="card-form" action="" method="POST">
+                {%csrf_token%}
+                <div class="input">
+                    <input type="url" name="link" class="input-field"  required/>
+                    <label class="input-label">Enter Link</label>
+                </div>
+                <div class="action">
+                    <button class="action-button">Generate Code</button>
+                </div>
+            </form>
+            <div class="card-image">	
+                <p class="card-heading">
+                    {% if qr_name %}
+                    <img src="/media/{{ qr_name }}" alt="qr code">
+                    <br><br>
+                    <a href="/media/{{ qr_name }}" download class=" btn-sucess">
+                        <p>Download Qr code as Image</p>
+                    </a>
+                    {% endif %}
+                </p>
+            </div>
         </div>
     </div>
-
   
 </body>
 </html>
+
+
+
